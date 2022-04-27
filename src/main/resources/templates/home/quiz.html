@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz App</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/home/home}">Quiz App</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a th:href="@{/home/home}">Home</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/signup}">Register</a></li>
+            <li><a href="${pageContext.request.contextPath}/feedback}">Feedback</a></li>
+            <li><a href="${pageContext.request.contextPath}/contactus}">Contact Us</a></li>
+            <li><a th:href="@{/logout}">Sign out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>This is the <span th:utext="${quizName}"></span> Quiz. You can start now.</h2>
+    <l1><span th:utext="${quizDescription}"></span></l1>
+</div>
+
+
+
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Quiz Name</th>-->
+<!--        <th>Start Time</th>-->
+<!--        <th>Finish Time</th>-->
+<!--        <th>Score</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:if="${takeQuizzes.empty}">-->
+<!--        <td colspan="2"> No Quiz Records Available </td>-->
+<!--    </tr>-->
+<!--    <tr th:each="record : ${takeQuizzes}">-->
+<!--        <td><span th:text="${record.quiz.quizName}"> Title </span></td>-->
+<!--        <td><span th:text="${record.startTime}"> Author </span></td>-->
+<!--        <td><span th:text="${record.finishTime}"> Author </span></td>-->
+<!--        <td><span th:text="${record.score}"> Author </span></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+
+
+
+
+
+
+
+<!--<tbody>-->
+<!--<tr th:each="question: ${questionList}">-->
+<!--    <div>-->
+<!--        <td th:text="${question.questionContent}" />-->
+<!--    </div>-->
+
+<!--</tr>-->
+<!--</tbody>-->
+
+
+<!--<div class="container py-5 px-4">-->
+<!--    <div th:each="question,qStatus: ${questionList}">-->
+<!--        <div class="m-2"><strong>Question<span th:text="${qStatus.index + 1}"></span>:</strong>-->
+<!--            <span th:text="${question.questionContent}"></span>-->
+<!--        </div>-->
+
+<!--        <div class="radio" th:each="option,oStatus: ${question.choices}">-->
+<!--            <label>-->
+<!--                <input type="radio" name="optionsRadios" id="" value="${qStatus.index}" th:text="*{option.getChoiceContent()}">-->
+<!--            </label>-->
+
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+
+<form method="POST" th:action="@{__${quizId}__/result}">
+        <span  th:each="question, qStat : ${questionList}">
+            <p valign="top" th:text="'Question' + ${qStat.index + 1} + ': '+${question.questionContent}">Text</p>
+
+            <tr th:each="choice, cStat : ${question.choices}">
+                <input width="5%" type="radio" th:name="|choiceList[${qStat.index}]|" th:text="${choice.getChoiceContent()}" th:value="${ choice.getChoiceId()}"/><BR>
+<!--                <input width="5%" type="radio" th:name="|choiceList[${stat.index}]|" th:value="${ choice.getChoiceId()}"/>-->
+
+            </tr>
+        </span>
+    <input type="submit" value="Submit">
+</form>
+
+
+
+</body>
+</html>

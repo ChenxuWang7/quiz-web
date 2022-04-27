@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz App</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/home/home}">Quiz App</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a th:href="@{/home/home}">Home</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/signup}">Register</a></li>
+            <li><a href="${pageContext.request.contextPath}/feedback}">Feedback</a></li>
+            <li><a href="${pageContext.request.contextPath}/contactus}">Contact Us</a></li>
+            <li><a th:href="@{/logout}">Sign out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>Congratulation! Submit Successfully.</h2>
+    <l1>Your score is :<span th:text="${score}"></span></l1>
+</div>
+
+
+</body>
+</html>
