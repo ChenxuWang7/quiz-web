@@ -19,13 +19,15 @@
             <li class="active"><a th:href="@{/home/home}">Home</a></li>
             <li><a th:href="@{/login}">Login</a></li>
             <li><a th:href="@{/signup}">Register</a></li>
-            <li><a href="${pageContext.request.contextPath}/feedback}">Feedback</a></li>
-            <li><a href="${pageContext.request.contextPath}/contactus}">Contact Us</a></li>
+            <li><a th:href="@{/feedback}">Feedback</a></li>
+            <li><a th:href="@{/contactus}">Contact Us</a></li>
             <li><a th:href="@{/logout}">Sign out</a></li>
         </ul>
     </div>
 </nav>
 
+
+<!--show the quizzes to select-->
 <div class="container">
     <h2>Hi <span th:utext="${userName}"></span>, this is the home page. You can start the quiz now.</h2>
 
@@ -39,6 +41,8 @@
             </ul>
         </div>
 </div>
+
+<!--show the quizz records-->
 
 
 </body>

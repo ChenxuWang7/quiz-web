@@ -1,9 +1,12 @@
 package com.example.quizapp.model;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="role")
+@ToString
 public class Role {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

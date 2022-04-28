@@ -31,5 +31,10 @@ public class Feedback {
     @Column(name = "review")
     private String review;
 
-
+    public Feedback(User user, Quiz quiz, int rating, String review){
+        this.user = user;
+        this.quiz = quiz;
+        this.rating = rating;
+        this.review = review;
+    }
 }

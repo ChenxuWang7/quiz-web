@@ -20,14 +20,14 @@
             <li class="active"><a th:href="@{/home/home}">Home</a></li>
             <li><a th:href="@{/login}">Login</a></li>
             <li><a th:href="@{/signup}">Register</a></li>
-            <li><a href="${pageContext.request.contextPath}/feedback}">Feedback</a></li>
-            <li><a href="${pageContext.request.contextPath}/contactus}">Contact Us</a></li>
+            <li><a th:href="@{/feedback}">Feedback</a></li>
+            <li><a th:href="@{/contactus}">Contact Us</a></li>
             <li><a th:href="@{/logout}">Sign out</a></li>
         </ul>
     </div>
 </nav>
 
-<div class="container">
+<div class="container" align="left">
     <h2>This is the <span th:utext="${quizName}"></span> Quiz. You can start now.</h2>
     <l1><span th:utext="${quizDescription}"></span></l1>
 </div>
@@ -102,7 +102,6 @@
         </span>
     <input type="submit" value="Submit">
 </form>
-
 
 
 </body>

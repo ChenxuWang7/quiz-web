@@ -1,10 +1,7 @@
 package com.example.quizapp.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,6 +13,7 @@ import java.util.Set;
 //@AllArgsConstructor
 @Setter
 @Getter
+//@ToString do not use this annotation.
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,5 +44,9 @@ public class User{
 
     @OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<TakeQuiz> takeQuizzes;
+
+    public String showUser(){
+        return firstname + "-" + lastname + "-" + email + "-" + active + "-" + roles.toString();
+    }
 
 }

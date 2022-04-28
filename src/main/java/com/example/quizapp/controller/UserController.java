@@ -52,17 +52,18 @@ public class UserController {
         return "redirect:/home/home";
     }
 
-    @RequestMapping(value= {"/admin/admin_home"}, method=RequestMethod.GET)
-    public ModelAndView admin_home() {
-        ModelAndView model = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("Admin home's visitor is " + auth.getAuthorities());
-        User user = userService.findUserByEmail(auth.getName());
-
-        model.addObject("userName", user.getFirstname() + " " + user.getLastname());
-        model.setViewName("admin/admin_home");
-        return model;
-    }
+    // ------- the part have moved to the adminController
+//    @RequestMapping(value= {"/admin/admin_home"}, method=RequestMethod.GET)
+//    public ModelAndView admin_home() {
+//        ModelAndView model = new ModelAndView();
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        System.out.println("Admin home's visitor is " + auth.getAuthorities());
+//        User user = userService.findUserByEmail(auth.getName());
+//
+//        model.addObject("userName", user.getFirstname() + " " + user.getLastname());
+//        model.setViewName("admin/admin_home");
+//        return model;
+//    }
 
     //--------------------------
 

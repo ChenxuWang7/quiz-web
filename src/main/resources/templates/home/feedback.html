@@ -28,25 +28,36 @@
     </div>
 </nav>
 
-<div class="container" align="center">
-    <h2>Submit Successfully.</h2>
-
-    <l1>User Name :<span th:text="${firstName} + ${lastName}"></span></l1></br>
-    <l1>Quiz Type :<span th:text="${quizName}"></span></l1></br>
-    <l1>Start Time :<span th:text="${startTime}"></span></l1></br>
-    <l1>Finish Time :<span th:text="${finishTime}"></span></l1></br>
-    <l1>Score :<span th:text="${score}"></span></l1></br>
-</div>
-
-<div align="center">
-    <span th:if="${score lt 6}" >You do not pass the quiz.</span>
-    <span th:if="${score ge 6}" >Congratulation! You passed the quiz.</span>
-</div>
-<div align="center">
-<!--    <a th:href="@{/home/home}" class="button">Do Another Quiz</a>-->
-    <button onclick="window.location.href='/home/home'">Do Another Quiz</button>
+<div class="container">
+    <h2>Please share your feedback</h2>
 
 </div>
+
+<form  th:action="@{/feedback/submit}" method="post">
+<!--    <p>Feekback: <textarea th:field="*{feedback}" ></textarea></p>-->
+
+<!--    <input type="text" th:name="rating"/>-->
+    <l1>Please select the quiz:</l1></br>
+    <select th:name="quizType">
+        <option value="1">Math</option>
+        <option value="2">Cloze</option>
+        <option value="3">Sign</option>
+    </select></br>
+
+    <l1>Please rate the quiz:</l1></br>
+    <select th:name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select></br>
+
+    <l1>Your feedback:</l1></br>
+<!--    <input type="textarea" th:name="feedback"/>-->
+    <p><textarea th:name="feedback" ></textarea></p>
+    <input type="submit"/>
+</form>
 
 </body>
 </html>

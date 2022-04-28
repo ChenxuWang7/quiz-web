@@ -94,16 +94,27 @@ public class QuizController {
         ModelAndView model = new ModelAndView();
         System.out.println(choiceForm.toString());
 
-        //------get user, takeQuiz info.
+        //------get user, takeQuiz, quiz info.
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println("User Home's visitor is " + auth.getAuthorities());
         User user = userService.findUserByEmail(auth.getName());
 
+        model.addObject("firstName", user.getFirstname());
+        model.addObject("lastName", user.getLastname());
+
+
         List<TakeQuiz> takeQuiz = takeQuizService.findByUserAndStartTime(user, date_tmp);
         System.out.println(takeQuiz.get(0).toString());
 
+        model.addObject("startTime", takeQuiz.get(0).getStartTime());
+
+        Quiz quiz = quizService.findByQuizId(quizId);
+        model.addObject("quizName", quiz.getQuizName());
+
+        // ----------get finishTime and compute score.---------
         Date finishTime = new Date();
 
+        model.addObject("finishTime", finishTime);
         // --------compute score-------
         int score = choiceService.computeQuizScore(choiceForm);
         System.out.println("score is " + score);
